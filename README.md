@@ -18,7 +18,9 @@
 
 
 ## 設計書
-<...>
+<設計書 https://drive.google.com/file/d/1o4VJASjn6tC5CS1FzjqkvMxdKS0IhGsV/view?usp=sharing>
+<図 https://docs.google.com/spreadsheets/d/1QB-CiJ_los7QLn8lXscibwZ4v5nctIy1OgzMDAeDSpc/edit?usp=sharing>
+<画面設計 https://docs.google.com/presentation/d/1taL8B5vIyOX2FicZPxHmsMWdsC6JuTNXocMB8crnWwo/edit?usp=sharing>
 
 ## チャレンジ要素一覧
 <https://docs.google.com/spreadsheets/d/1MNZhM68LD_DjfC55XU8yb07Jd4WsfEXcfree-oACoVs/edit#gid=0>
