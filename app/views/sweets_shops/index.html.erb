@@ -1,0 +1,14 @@
+<p id=notice></p>
+<div class=container>
+ <div class=row>
+  <div class= "mx-auto">
+    <h2>スイーツショップ</h2>
+    <% @sweets_shops.each do |sweets_shop| %>
+       <%= link_to image_tag("image.png", class: "image"), sweets_shop_path(sweets_shop.id) %>
+       <%= link_to sweets_shop.shop_name, sweets_shop_path(sweets_shop.id) %></br>
+
+       <%= sweets_shop.created_at.strftime('%Y/%m/%d') %>
+    <% end %>
+  </div>
+ </div>
+</div>

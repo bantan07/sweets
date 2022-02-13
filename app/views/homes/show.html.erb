@@ -1,0 +1,20 @@
+<p id=notice></p>
+<div class=container>
+ <div class=row>
+  <div class="px-3 mx-auto">
+    <%= @sweets_shop.shop_name %>
+    <%= link_to @sweets_shop.image, "data-lightbox": 'image.png' do %>
+      <%= image_tag 'image.png', class:"img"%>
+    <% end %>
+    <%= @sweets_shop.item_name %>
+    <%= @sweets_shop.price %>
+    <%= @sweets_shop.genre %>
+    <%= @sweets_shop.body %>
+    <%= @sweets_shop.address %>
+    <%= @sweets_shop.business_hours %>
+    <%= @sweets_shop.business_hours %>
+    <%= @sweets_shop.created_at %>
+  </div>
+ </div>
+</div>
+    

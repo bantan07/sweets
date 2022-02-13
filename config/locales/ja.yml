@@ -1,0 +1,8 @@
+ja:
+  enums:
+    sweets_shop:
+      status:
+        possible: "可能"
+        impossible: "不可"
+        partially_possible: "一部可能"
+

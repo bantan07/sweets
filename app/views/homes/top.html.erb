@@ -1,0 +1,23 @@
+<p id="notice"></p>
+<div class=container>
+  <div class=row>
+    <div class="px-3 mx-auto">
+      <h2>オジェドオヌルドネイルド</h2>
+      <h3>
+        全国のおすすめスイーツのショップを</br>
+        みんなで共有するサイトです。
+      </h3>
+      <%#= form_tag(search_path,:method => 'get') do %>
+        <%#= text_field_tag :search %>
+        <%#= submit_tag 'Search', :name => nil %>
+      <%#= end %>
+
+      <% @sweets_shops.each do |sweets_shop| %>
+        <%= image_tag sweets_shop.image, size =>'320x480' %>
+        <%= sweets_shop.shop_name %></br>
+        <%= sweets_shop.tag %>
+        <%= sweets_shop.created_at %>
+      <% end %>
+    </div>
+  </div>
+</div>
