@@ -1,0 +1,15 @@
+<%= image_tag 'image.png', size: '320x240' %>
+<table class="table">
+  <tbody>
+    <tr>
+      <th>name</th>
+      <th><%= user.name %></th>
+    </tr>
+    <tr>
+      <th>introduction</th>
+      <th><%= user.introduction %></th>
+     </tr>
+  </tbody>
+</table>
+<%= link_to "編集", edit_user_path, class: 'btn btn-outline-secondary' %>
+

@@ -3,7 +3,7 @@
  <div class=row>
   <div class="px-3 mx-auto">
    <h4>新規投稿</h4>
-     <%= form_with model: @sweets_shop, url: sweets_shops_path,method: :post, local:true do |f| %>
+     <%= form_with model: @sweets_shop, url: sweets_shops_path(@sweets_shop.id),method: :post, local:true do |f| %>
       <div class=f-group>
        <label for="image_id">画像
         <%= f.attachment_field :image %>

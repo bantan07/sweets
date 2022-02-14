@@ -1,0 +1,11 @@
+<h2>
+  <% @user.name %>さん</br>
+  投稿一覧
+</h2>
+<% @sweets_shops.each do |sweets_shop| %>
+  <%= link_to sweets_shops_path(sweets_shop.id) do %>
+    <%= attachment_image_tag @sweets_shop, :image, :size =>'400x100', fallback: "image.png" %>
+  <% end %>
+  <%= link_to sweets_shop.shop_name, sweets_shops_path(sweets_shop.id) %>
+  <%= sweets_shop.created_at.strftime('%Y/%m/%d') %>
+<% end %>

@@ -1,7 +1,8 @@
 class ApplicationController < ActionController::Base
+   add_flash_types :success, :info, :warning, :danger
   before_action :configure_permitted_parameters, if: :devise_controller?
   
-  def destroy_user_session_path_for(resource)
+  def after_sign_out_path_for(resource)
     root_path(resource)
   end
   
