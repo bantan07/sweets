@@ -5,11 +5,10 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   attachment :image
-  has_one :mypage
   has_many :sweets_shops, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
-
+  has_many :like_sweets_shops, through: :likes, source: :sweets_shop
   validates :name, presence: true
   # validate :introduction
 end

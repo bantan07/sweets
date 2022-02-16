@@ -1,13 +1,65 @@
-<%= render 'users/user',user:@user %>
 
-<% @sweets_shop.shop_name %>
-<%= attachment_image_tag @sweets_shop, :image, :size =>'200x100', fallback: "image.png" %>
-<%= @sweets_shop.item_name %>
-<%= @sweets_shop.genre %>
-<%= @sweets_shop.price %>
-<%= @sweets_shop.body %>
-<%= @sweets_shop.address %>
-<%= @sweets_shop.business_hours %>
-<%= @sweets_shop.regular_holiday %>
-<%= @sweets_shop.status %>
-<%= @sweets_shop.created_at.strftime('%Y/%m/%d') %>
+  <%= render 'users/user',user:@user %>
+
+<%= attachment_image_tag @sweets_shop, :image, :size =>'300x200', fallback: "image.png" %>
+<table class="table">
+    <tr>
+        <td><h1><%= @sweets_shop.shop_name %></h1></td>
+    </tr>
+        <th>商品名</th>
+        <td><%= @sweets_shop.item_name %></td>
+    </tr>
+    <tr>
+        <th>ジャンル</th>
+        <td><%= @sweets_shop.genre %></br></td>
+    </tr>
+    <tr>
+        <th>値段</th>
+        <td><%= @sweets_shop.price %>円</td>
+    </tr>
+    <tr>
+        <th>感想</th>
+        <td><%= @sweets_shop.body %></td>
+    </tr>
+    <tr>
+        <th>住所</th>
+        <td><%= @sweets_shop.address %></td>
+    </tr>
+    <tr>
+        <th>営業時間</th>
+        <td><%= @sweets_shop.business_hours %></td>
+    </tr>
+    <tr>
+        <th>定休日</th>
+        <td><%= @sweets_shop.regular_holiday %></td>
+    </tr>
+    <tr>
+        <th>テイクアウト</th>
+        <td><%= @sweets_shop.status %></td>
+    </tr>
+    <tr>
+        <th>投稿日</th>
+        <td><%= @sweets_shop.created_at.strftime('%Y/%m/%d') %></td>
+    </tr>
+
+    <% if @sweets_shop.user_id == current_user.id %>
+      <%= link_to "削除", sweets_shop_path(@sweets_shop.id),method: :delete, data: { confirm: "本当に消しますか？?" }, class: 'btn btn-sm btn-danger' %></td>
+    <% end %>
+</table>
+<div id="like-buttons">
+    <%= render 'likes/like', sweets_shop: @sweets_shop %>
+</div>
+<div>
+     <p>コメント件数：<%= @sweets_shop.comments.count %></p>
+     <% @sweets_shop.comments.each do |comment| %>
+       <p><%= image_tag('image.jpg') %></p>
+       <%= comment.user.name %>
+       <%= comment.created_at.strftime('%Y/%m/%d') %><%= comment.comment %>
+     <% end %>
+     </div>
+     <div>
+     <%= form_with(model:[@sweets_shop, @comment], local: true) do |f| %>
+       <%= f.text_area :comment, rows:'5',placeholder: "コメントをここに" %>
+       <%= f.submit "送信する" %>
+     <% end %>
+</div>

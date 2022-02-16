@@ -3,7 +3,7 @@ class CreateSweetsShops < ActiveRecord::Migration[5.2]
     create_table :sweets_shops do |t|
 
       t.integer :user_id
-      t.string :image
+      t.string :image_id
       t.string :shop_name
       t.string :item_name
       t.string :introduction
@@ -15,7 +15,7 @@ class CreateSweetsShops < ActiveRecord::Migration[5.2]
       t.integer :business_hours
       t.datetime :created_at
       t.datetime :updated_at
-      
+
     end
   end
 end

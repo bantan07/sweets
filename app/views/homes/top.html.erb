@@ -1,6 +1,6 @@
 <p id="notice"></p>
-<div class=container>
-  <div class=row>
+<div class="container">
+  <!--<div class=row>-->
     <div class="px-3 mx-auto">
       <h2>オジェドオヌルドネイルド</h2>
       <h3>
@@ -12,12 +12,16 @@
         <%#= submit_tag 'Search', :name => nil %>
       <%#= end %>
 
-      <% @sweets_shops.each do |sweets_shop| %>
-        <%= image_tag sweets_shop.image, size =>'320x480' %>
-        <%= sweets_shop.shop_name %></br>
-        <%= sweets_shop.tag %>
-        <%= sweets_shop.created_at %>
-      <% end %>
+      <div class="row">
+        <% @sweets_shops.each do |sweets_shop| %>
+          <div class="col-md-3">
+            <%= attachment_image_tag sweets_shop, :image, class: 'img-fluid' %>
+            <%= sweets_shop.shop_name %></br>
+            <%= sweets_shop.tag %>
+            <%= sweets_shop.created_at %>
+          </div>
+        <% end %>
+      </div>
     </div>
-  </div>
+  <!--</div>-->
 </div>

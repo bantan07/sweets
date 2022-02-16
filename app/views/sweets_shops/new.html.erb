@@ -54,11 +54,10 @@
         <%= f.select :status, SweetsShop.statuses_i18n.invert %>
        </label>
       </div>
-      <!--<div class=f-group>-->
-      <!-- <label for="tag">-->
-      <!--  <%#= f.text_fild :tag %>-->
-      <!-- </label>-->
-      <!--</div>-->
+      <div class=f-group>
+      <%= f.text_field :tag_ids, class: "form-control", id:'tag_ids',\
+      placeholder: "タグをつける。複数つけるには','で区切ってください。" %>
+      </div>
       <%= f.submit "投稿", class:'btn btn- btn-success' %>
      <% end %>
   </div>

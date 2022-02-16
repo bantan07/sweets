@@ -9,13 +9,13 @@
     <!--  </ul>-->
     <!--</div>-->
     <!--<%# end %>-->
-<%=link_to "退会する", mypages_withdraw_path, method: :patch, data: { confirm: "本当に退会しますか?" }, class:'btn btn-danger' %>
-<%= form_with model:@user, local:true do |f| %>
+<%=link_to "退会する", withdraw_path, method: :patch, data: { confirm: "本当に退会しますか?" }, class:'btn btn-danger' %>
+<%= form_with model: @user, url: user_path(@user.id), local:true, method: :patch do |f| %>
   <div class=group>
     <label for="inputName">
       <%= f.text_field :name, autofocus: true, id:"inputName"%>
     </label>
-  </div> 
+  </div>
   <div class=group>
     <label for="inputImage">
      <%= f.attachment_field :image %>
@@ -27,5 +27,5 @@
     </label>
   </div>
   <%= f.submit "編集", class:'btn btn-secondary' %>
-  
+
  <% end %>

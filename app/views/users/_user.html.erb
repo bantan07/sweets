@@ -1,4 +1,4 @@
-<%= image_tag 'image.png', size: '320x240' %>
+<%= attachment_image_tag user, :image, :size =>'180x100' %>
 <table class="table">
   <tbody>
     <tr>
@@ -11,5 +11,7 @@
      </tr>
   </tbody>
 </table>
-<%= link_to "編集", edit_user_path, class: 'btn btn-outline-secondary' %>
+<%= link_to "一覧", user_path(user.id) %>
+<%= link_to "編集", user_edit_path, class: 'btn btn-outline-secondary' %>
+
 

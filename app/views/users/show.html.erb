@@ -1,11 +1,13 @@
-<h2>
-  <% @user.name %>さん</br>
-  投稿一覧
-</h2>
+<%= render 'users/user',user:current_user %>
+<%= link_to "新規投稿", new_sweets_shop_path, class:'btn btn-primary' %>
+<h3>投稿一覧</h3>
 <% @sweets_shops.each do |sweets_shop| %>
-  <%= link_to sweets_shops_path(sweets_shop.id) do %>
-    <%= attachment_image_tag @sweets_shop, :image, :size =>'400x100', fallback: "image.png" %>
+  <%= link_to sweets_shop_path(sweets_shop.id) do %>
+    <%= attachment_image_tag sweets_shop, :image, :size =>'200x100', fallback: "image.png" %>
   <% end %>
-  <%= link_to sweets_shop.shop_name, sweets_shops_path(sweets_shop.id) %>
+  <%=link_to sweets_shop.shop_name, sweets_shop_path(sweets_shop.id) %>
+  <% sweets_shop.tags.each do |tag| %>
+        <%= tag.name %>
+  <% end %>
   <%= sweets_shop.created_at.strftime('%Y/%m/%d') %>
 <% end %>

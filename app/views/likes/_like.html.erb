@@ -1,0 +1,15 @@
+ <p>いいね：<%= sweets_shop.likes.count %></p>
+<% if user_signed_in? %>
+
+  <% if sweets_shop.like_user(current_user.id).nil? %>
+    <%= link_to 'Good!', sweets_shop_like_path(sweets_shop_id: sweets_shop.id), method: :post, remote: true %>
+  <% else %>
+    <%= link_to 'No Good!', sweets_shop_unlike_path(sweets_shop_id: sweets_shop.id), method: :delete, remote: true %>
+  <% end %>
+
+<% else %>
+  <%= image_tag("image.png") %>jpg
+    <span>jpg
+      <%= @sweets_shop.like_user(current_user.id) %>
+    </span>
+<% end %>

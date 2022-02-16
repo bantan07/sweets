@@ -1,6 +1,6 @@
 class MypagesController < ApplicationController
-　before_action :authenticate_user!
-　before_action :ensure_correct_user
+before_action :authenticate_user!
+before_action :ensure_correct_user
 
   def index
     @mypage = current_user
@@ -11,17 +11,18 @@ class MypagesController < ApplicationController
   #   @mypage = cureent_user
   # end
 
-# def withdraw
-#   @customer = current_customer
-#   @customer.update(is_active: false)
-#   reset_session
-#   redirect_to root_path
-# end
 
-　private
 
-　def mypage_params
+  private
+
+  def mypage_params
     params.require(:mypage).permit(:user_id, :image, :sweets_shop_id)
   end
 
+  def ensure_correct_user
+    user = Mypage.find(params[:id]).user
+    if current_user.id != user.id
+      redirect_to sweets_shops_path
+    end
+  end
 end

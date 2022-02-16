@@ -4,10 +4,10 @@ class CreateMypages < ActiveRecord::Migration[5.2]
 
       t.integer :user_id
       t.integer :sweets_shop_id
-      t.string :image
+      t.string :image_id
       t.datetime :created_at
       t.datetime :updated_at
-      
+
     end
   end
 end
