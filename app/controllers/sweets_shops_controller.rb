@@ -38,7 +38,7 @@ class SweetsShopsController < ApplicationController
 
   def sweets_shop_params
     params.require(:sweets_shop).permit(:user_id, :image, :shop_name, :item_name, :genre, :price, :address, :body,
-    :business_hours, :regular_holiday, :tag, :status)
+    :start_time, :finish_time, :regular_holiday, :tag, :status)
   end
   
   

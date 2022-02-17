@@ -35,13 +35,18 @@
        </label>
       </div>
       <div class=f-group>
-       <label for="business_hours">住所
+       <label for="address">住所
         <%= f.text_field :address %>
        </label>
       </div>
       <div class=f-group>
-       <label for="business_hours">営業時間
-        <%= f.text_field :business_hours %>
+       <label for="start_time">開店時間
+        <%= f.time_select(:start_time, {class:'select-date', id:"start-time", prompt:'--', time_separator: ':'}) %>
+       </label>
+      </div>
+      <div class=f-group>
+       <label for="finish_time">閉店時間
+        <%= f.time_select(:finish_time, {class:'select-date', id:"finish-time", prompt:'--', time_separator: ':'}) %>
        </label>
       </div>
       <div class=form-group>

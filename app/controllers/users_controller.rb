@@ -5,6 +5,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @sweets_shop = SweetsShop.new
     @sweets_shops = @user.sweets_shops
+    
 
   end
 

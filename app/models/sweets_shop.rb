@@ -2,7 +2,6 @@ class SweetsShop < ApplicationRecord
 
     attachment :image
     belongs_to :user, optional: true
-    belongs_to :mypage, optional: true
     has_many  :tag_relationships, dependent: :destroy
     has_many  :tags, through: :tag_relationships
     has_many :comments, dependent: :destroy
@@ -20,7 +19,6 @@ class SweetsShop < ApplicationRecord
     validates :price, presence: true
     validates :address, presence: true
     validates :body, presence: true
-    validates :business_hours, presence: true
     validates :regular_holiday, presence: true
     validates :status, presence: true
 

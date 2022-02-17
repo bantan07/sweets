@@ -26,8 +26,12 @@
         <td><%= @sweets_shop.address %></td>
     </tr>
     <tr>
-        <th>営業時間</th>
-        <td><%= @sweets_shop.business_hours %></td>
+        <th>開店時間</th>
+        <td><%= @sweets_shop.start_time.strftime( "%H:%M" ) %></td>
+   </tr>
+   <tr>
+       <th>閉店時間</th>
+       <td><%= @sweets_shop.finish_time.strftime( "%H:%M" ) %></td>
     </tr>
     <tr>
         <th>定休日</th>
