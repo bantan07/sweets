@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_17_124315) do
+ActiveRecord::Schema.define(version: 2022_02_18_115515) do
 
   create_table "comments", force: :cascade do |t|
     t.integer "user_id"
@@ -30,7 +30,6 @@ ActiveRecord::Schema.define(version: 2022_02_17_124315) do
   create_table "mypages", force: :cascade do |t|
     t.integer "user_id"
     t.integer "sweets_shop_id"
-    t.string "image_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -50,8 +49,6 @@ ActiveRecord::Schema.define(version: 2022_02_17_124315) do
     t.datetime "updated_at"
     t.string "search"
     t.integer "status"
-    t.time "start_time"
-    t.time "finish_time"
   end
 
   create_table "tag_relationships", force: :cascade do |t|

@@ -28,6 +28,5 @@ class SweetsShop < ApplicationRecord
      self.tags << sweets_shop_tag
      end
     end
-
 end
 

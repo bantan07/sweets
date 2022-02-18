@@ -1,21 +1,7 @@
+<%= render 'mypages/user',user:current_user %>
 <p id="notice"></p>
-<div class="container px-5 px-sm-0">
-    <div class="col-md-3">
-        <%= attachment_image_tag @user, :image, :size =>'180x100' %>
-        <table class="table">
-          <tbody>
-            <tr>
-              <th>name</th>
-              <th><%= @user.name %></th>
-            </tr>
-            <tr>
-              <th>introduction</th>
-              <th><%= @user.introduction %></th>
-             </tr>
-          </tbody>
-        </table>
-    </div>
-      <h3>投稿一覧</h3>
+<div class="container">
+    <div class="px-3 mx-auto">
       <div class="row">
         <% @sweets_shops.each do |sweets_shop| %>
           <div class="col-md-3">

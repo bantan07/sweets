@@ -1,16 +1,19 @@
 <p id="notice"></p>
 <div class="container">
-  <!--<div class=row>-->
     <div class="px-3 mx-auto">
-      <h2>オジェドオヌルドネイルド</h2>
       <h3>
         昨日も今日も明日も</br>
         自分にご褒美を
       </h3>
-      <%#= form_tag(search_path,:method => 'get') do %>
-        <%#= text_field_tag :search %>
-        <%#= submit_tag 'Search', :name => nil %>
-      <%#= end %>
+      
+      <%#= form_with url: root_path, method: :get, class: '自由に' do %>
+        <%#= select_tag :tag_id,
+        options_from_collection_for_select(Tag.all, :id, :name, params[:tag_id]),
+        {
+          prompt: 'タグで絞り込み',
+          onchange: 'submit(this.form);'
+        }%>
+      <%# end %>
 
       <div class="row">
         <% @sweets_shops.each do |sweets_shop| %>
@@ -28,5 +31,4 @@
         <% end %>
       </div>
     </div>
-  <!--</div>-->
 </div>
