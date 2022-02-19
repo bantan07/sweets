@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
  before_action :authenticate_user!
+ before_action :set_user, only: [:likes]
 
   def show
     @user = User.find(params[:id])
@@ -16,7 +17,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
-     redirect_to user_path(@user.id)
+     redirect_to mypage_path(current_user)
     else
      render :edit
     end
@@ -34,6 +35,4 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:name, :introduction, :image, :is_active)
   end
-
-
 end

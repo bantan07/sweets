@@ -17,8 +17,11 @@ class SweetsShop < ApplicationRecord
     validates :item_name, presence: true
     validates :genre, presence: true
     validates :price, presence: true
+    validates :prefectures, presence: true
     validates :address, presence: true
     validates :body, presence: true
+    validates :start_time, presence: true
+    validates :finish_time, presence: true
     validates :regular_holiday, presence: true
     validates :status, presence: true
 
@@ -28,5 +31,22 @@ class SweetsShop < ApplicationRecord
      self.tags << sweets_shop_tag
      end
     end
-end
 
+    def self.search(search)
+      return SweetsShop.all unless search
+      SweetsShop.where(['content LIKE ?', "%#{search}%"])
+    end
+
+    def self.sort(selection)
+      case selection
+      when 'new'
+        return all.order(created_at: :DESC)
+      when 'old'
+        return all.order(created_at: :ASC)
+      when 'likes'
+        return find(Favorite.group(:sweets_shop_id).order(Arel.sql('count(sweets_shop_id) desc')).pluck(:sweets_shop_id))
+      when 'dislikes'
+        return find(Favorite.group(:sweets_shop_id).order(Arel.sql('count(sweets_shop_id) asc')).pluck(:sweets_shop_id))
+      end
+    end
+end

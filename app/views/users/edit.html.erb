@@ -1,16 +1,7 @@
 <h2>編集</h2>
-    <!-- <%# if @user.errors.any? %>-->
-    <!-- <div id="error_explanation">-->
-    <!--  <h3><%#= pluralize(@user.errors.count, "error") %> 1 error prohibited this obj from being saved:</h3>-->
-    <!--  <ul>-->
-    <!--    <%# @user.errors.full_messages.each do |message| %>-->
-    <!--      <li><%#= message %></li>-->
-    <!--    <%# end %>-->
-    <!--  </ul>-->
-    <!--</div>-->
-    <!--<%# end %>-->
 <%=link_to "退会する", withdraw_path, method: :patch, data: { confirm: "本当に退会しますか?" }, class:'btn btn-danger' %>
 <%= form_with model: @user, url: user_path(@user.id), local:true, method: :patch do |f| %>
+<%= render 'layouts/error', model: f.object %>
   <div class=group>
     <label for="inputName">
       <%= f.text_field :name, autofocus: true, id:"inputName"%>

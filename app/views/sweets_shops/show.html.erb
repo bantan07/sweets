@@ -24,16 +24,21 @@
                     <td><%= @sweets_shop.body %></td>
                 </tr>
                 <tr>
+                    <th>都道府県</th>
+                    <td><%= @sweets_shop.prefectures %></td>
+                </tr>
+                <tr>
+                <tr>
                     <th>住所</th>
                     <td><%= @sweets_shop.address %></td>
                 </tr>
                 <tr>
                     <th>開店時間</th>
-                    <td><%#= @sweets_shop.start_time.strftime( "%H:%M" ) %></td>
+                    <td><%= @sweets_shop.start_time.strftime( "%H:%M" ) %></td>
                </tr>
                <tr>
                    <th>閉店時間</th>
-                   <td><%#= @sweets_shop.finish_time.strftime( "%H:%M" ) %></td>
+                   <td><%= @sweets_shop.finish_time.strftime( "%H:%M" ) %></td>
                 </tr>
                 <tr>
                     <th>定休日</th>
@@ -61,6 +66,11 @@
                    <p><%= image_tag('image.jpg') %></p>
                    <%= comment.user.name %>
                    <%= comment.created_at.strftime('%Y/%m/%d') %><%= comment.comment %>
+                   <% if post_comment.user == current_user %>
+                   <div>
+                     <%= link_to "削除", sweets_shop_comment_path(comment.sweets_shop, comment), method: :delete %>
+                   </div>
+                  <% end %>
                  <% end %>
                  </div>
                  <div>

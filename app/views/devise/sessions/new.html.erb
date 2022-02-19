@@ -4,15 +4,16 @@
   <div class="px-3 mx-auto">
     <h4>ログイン</h4>
      <%= form_with model:resource, url: session_path(resource), local: true do |f| %>
-       <div class=f-group>
+       <%= render 'layouts/error', model: f.object %>
+       <div class=form-group>
          <label for="email">メールアドレス
-           <%= f.text_field :email %>
+          <%= f.text_field :email %>
          </label>
        </div>
-       <div class=f-group>
-         <label for"password">パスワード
-           <%= f.text_field :password %>
-         </label>
+        <div class=form-group>
+         <label for="password">パスワード
+        <%= f.password_field :password %>
+        </label>
        </div>
        <div class="text-center">
          <%=f.submit "ログイン" , class:'btn btn- btn-success' %>
@@ -22,3 +23,4 @@
   </div>
  </div>
 </div>
+

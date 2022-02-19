@@ -1,6 +1,6 @@
 class SweetsShopsController < ApplicationController
   before_action :authenticate_user!
-  
+
 
   def new
     @sweets_shop = SweetsShop.new
@@ -9,8 +9,6 @@ class SweetsShopsController < ApplicationController
   def index
     @sweets_shop = SweetsShop.new
     @sweets_shops = SweetsShop.all
-
-
   end
 
   def show
@@ -34,13 +32,24 @@ class SweetsShopsController < ApplicationController
     end
   end
 
+  # def search
+  #   #Viewのformで取得したパラメータをモデルに渡す
+  #   @sweets_shops = sweets_shop.search(params[:search])
+  # end
+
+  def destroy
+    @sweets_shop = SweetsShop.find(params[:id]).destroy
+    redirect_to sweets_shops_path
+  end
+
+
   private
 
   def sweets_shop_params
     params.require(:sweets_shop).permit(:user_id, :image, :shop_name, :item_name, :genre, :price, :address, :body,
-    :start_time, :finish_time, :regular_holiday, :tag, :status)
+    :start_time, :finish_time, :regular_holiday, :tag, :status, :prefectures)
   end
-  
-  
+
+
 end
 

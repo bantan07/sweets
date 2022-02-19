@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_18_115515) do
+ActiveRecord::Schema.define(version: 2022_02_19_115109) do
 
   create_table "comments", force: :cascade do |t|
     t.integer "user_id"
@@ -45,10 +45,13 @@ ActiveRecord::Schema.define(version: 2022_02_18_115515) do
     t.string "regular_holiday"
     t.string "tag"
     t.integer "price"
+    t.time "start_time"
+    t.time "finish_time"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string "search"
     t.integer "status"
+    t.string "prefectures"
   end
 
   create_table "tag_relationships", force: :cascade do |t|

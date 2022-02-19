@@ -12,8 +12,11 @@ class CreateSweetsShops < ActiveRecord::Migration[5.2]
       t.string :regular_holiday
       t.string :tag
       t.integer :price
+      t.time :start_time
+      t.time :finish_time
       t.datetime :created_at
       t.datetime :updated_at
+      
       
     end
   end
