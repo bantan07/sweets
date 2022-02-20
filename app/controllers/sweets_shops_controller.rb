@@ -20,6 +20,7 @@ class SweetsShopsController < ApplicationController
 
 
   def create
+    # binding.irb
     @sweets_shop = SweetsShop.new(sweets_shop_params)
     @sweets_shop.user_id = current_user.id
     tag_list = params[:sweets_shop][:tag_ids].split(',')
@@ -32,10 +33,18 @@ class SweetsShopsController < ApplicationController
     end
   end
 
-  # def search
-  #   #Viewのformで取得したパラメータをモデルに渡す
-  #   @sweets_shops = sweets_shop.search(params[:search])
-  # end
+  def search
+
+    @sweets_shops = SweetsShop.search(params[:search])
+
+    @selection = params[:keyword]
+    if params[:keyword].present?
+     @sweets_shops = SweetsShop.sort(@selection)
+    end
+    pp @sweets_shops
+    render :index
+
+  end
 
   def destroy
     @sweets_shop = SweetsShop.find(params[:id]).destroy
@@ -47,7 +56,7 @@ class SweetsShopsController < ApplicationController
 
   def sweets_shop_params
     params.require(:sweets_shop).permit(:user_id, :image, :shop_name, :item_name, :genre, :price, :address, :body,
-    :start_time, :finish_time, :regular_holiday, :tag, :status, :prefectures)
+    :start_time, :finish_time, :regular_holiday, :tag, :status, :prefectures, :search)
   end
 
 

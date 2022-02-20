@@ -34,7 +34,18 @@ class SweetsShop < ApplicationRecord
 
     def self.search(search)
       return SweetsShop.all unless search
-      SweetsShop.where(['content LIKE ?', "%#{search}%"])
+      ss1 = SweetsShop.where(['shop_name LIKE ?', "%#{search}%"])
+        .or(SweetsShop.where(['prefectures LIKE ?', "%#{search}%"]))
+      #  .or(SweetsShop.all.includes(:tag).where(tag: ['name LIKE ?', "%#{search}%"]))
+      ss2 = []
+      search_tag = Tag.where(['name LIKE ?', "%#{search}%"])
+      search_tag.each do |tag|
+        tag.sweets_shops.each do |sweet_shop|
+          ss2.push(sweet_shop)
+        end
+      end
+      total_record = ss1 + ss2
+      total_record.uniq
     end
 
     def self.sort(selection)
@@ -44,9 +55,16 @@ class SweetsShop < ApplicationRecord
       when 'old'
         return all.order(created_at: :ASC)
       when 'likes'
-        return find(Favorite.group(:sweets_shop_id).order(Arel.sql('count(sweets_shop_id) desc')).pluck(:sweets_shop_id))
+        #
+        #iine_ari = find(Like.group(:sweets_shop_id).order(Arel.sql('count(sweets_shop_id) desc')).pluck(:sweets_shop_id))
+        #iine_nashi = SweetsShop.all - iine_ari
+        #total_record = iine_ari + iine_nashi
+        #return total_record
+        return self.left_joins(:likes).group(:id).order(Arel.sql('count(sweets_shop_id) desc'))
+        # return find(Like.group(:sweets_shop_id).order(Arel.sql('count(sweets_shop_id) desc')).pluck(:sweets_shop_id))
       when 'dislikes'
-        return find(Favorite.group(:sweets_shop_id).order(Arel.sql('count(sweets_shop_id) asc')).pluck(:sweets_shop_id))
+        return self.left_joins(:likes).group(:id).order(Arel.sql('count(sweets_shop_id) asc'))
+        #return find(Like.group(:sweets_shop_id).order(Arel.sql('count(sweets_shop_id) asc')).pluck(:sweets_shop_id))
       end
     end
 end

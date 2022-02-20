@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     registrations: "users/registrations"
   }
   root to: "homes#top"
+  
   resources :sweets_shops, except: [:edit, :update] do
     resources :comments, only: [:create, :destroy]
     # resources :likes, only: [:create, :destroy]

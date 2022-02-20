@@ -1,19 +1,40 @@
-<div class="container px-5 px-sm-0">
-    <div class="col-md-3">
-      <h2>投稿者</h2>
-        <%= attachment_image_tag user, :image, :size =>'100x50', class: 'img-fluid' %>
-        <table class="table">
-          <tbody>
-            <tr>
-              <th>name</th>
-              <th><%= user.name %></th>
-            </tr>
-            <tr>
-              <th>introduction</th>
-              <th><%= user.introduction %></th>
-             </tr>
-          </tbody>
-        </table>
-          <%= link_to "一覧", user_path(user.id) %>
-    </div>
- </div>
+<h2>投稿者</h2>
+    <%= attachment_image_tag user, :image, :size =>'100x50', class: 'img-fluid' %>
+    <table class="table">
+      <tbody>
+        <tr>
+          <th>name</th>
+          <th><%= user.name %></th>
+        </tr>
+        <tr>
+          <th>introduction</th>
+          <th><%= user.introduction %></th>
+        </tr>
+      </tbody>
+    </table>
+    <%= link_to "一覧", user_path(user.id) %>
+    <p></p>
+      <div id="like-buttons">
+          <%= render 'likes/like', sweets_shop: @sweets_shop %>
+      </div>
+      <p></p>
+      <div>
+             <p>コメント件数：<%= @sweets_shop.comments.count %></p>
+             <% @sweets_shop.comments.each do |comment| %>
+               <%= comment.user.name %></br>
+               <%= comment.comment %></br>
+               <%= comment.created_at.in_time_zone('Tokyo').strftime('%Y/%m/%d %H:%M') %>
+               <% if comment.user == current_user %>
+               <div>
+                 <%= link_to "削除", sweets_shop_comment_path(comment.sweets_shop, comment), method: :delete %>
+               </div>
+              <% end %>
+             <% end %>
+             </div>
+             <div>
+             <%= form_with(model:[@sweets_shop, @comment], local: true) do |f| %>
+               <%= f.text_area :comment, rows:'5',placeholder: "コメントをここに" %>
+               <%= f.submit "送信する" %>
+             <% end %>
+            </div>
+     </div>
