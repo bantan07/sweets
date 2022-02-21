@@ -16,5 +16,6 @@ Rails.application.routes.draw do
   resources :users, only: [:create, :show, :update] 
   get "user/edit" =>"users#edit"
   get "mypage" =>"mypages#index"
+  get "mypage/likes" =>"mypages#show"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

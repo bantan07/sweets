@@ -67,4 +67,8 @@ class SweetsShop < ApplicationRecord
         #return find(Like.group(:sweets_shop_id).order(Arel.sql('count(sweets_shop_id) asc')).pluck(:sweets_shop_id))
       end
     end
+    
+    def likeed_by?(user)
+      kikes.where(user_id: user).exists?
+    end
 end

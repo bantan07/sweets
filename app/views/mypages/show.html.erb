@@ -1,0 +1,30 @@
+<p id="notice"></p>
+<div class="container">
+  <div class="row">
+    <div class="px-5 mx-auto">
+      <h3>いいね一覧</h3>
+        <table class="teble">
+          <thead>
+            <tr>
+              <th>投稿者</th>
+              <th>店名</th>
+              <th>商品名</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @likes.each do |like| %>
+              <tr>
+                <td><%= like.sweets_shop.user.name %></td>
+                <td>
+                  <%= link_to sweets_shop_path(like.sweets_shop) do %>
+                    <%= like.sweets_shop.shop_name %>
+                  <% end %>
+                </td>
+                <td><%= like.sweets_shop.item_name %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+    </div>
+  </div>
+</div>
