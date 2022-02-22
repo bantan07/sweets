@@ -33,6 +33,10 @@
             <li class="nav-item">
               <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class:"btn btn-outline-dark" %>
             </li>
+            <% elsif admin_signed_in? %>
+            <li class="nav-item">
+              <%= link_to "ログアウト", destroy_admin_session, method: :delete, class:"btn btn-outline-dark" %>
+            </li>
           <% else %>
           <li class="nav-item">
               <%= link_to "ホーム", root_path, class:"btn btn-outline-dark" %>

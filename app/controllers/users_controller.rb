@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
  before_action :authenticate_user!
- before_action :set_user, only: [:likes]
 
   def show
     @user = User.find(params[:id])

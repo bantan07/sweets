@@ -4,12 +4,7 @@ class Users::SessionsController < Devise::SessionsController
   before_action :reject_inactive_user, only: [:create]
   before_action :configure_sign_in_params, only: [:create]
 
-
-  def sign_in_path_for(resource)
-    sweets_shops_path
-  end
-
-  # GET /resource/sign_in
+ # GET /resource/sign_in
   # def new
   #   super
   # end
@@ -32,6 +27,10 @@ class Users::SessionsController < Devise::SessionsController
       if @user.valid_password?(params[:user][:password]) && !@user.is_active
         redirect_to new_user_session_path
       end
+  end
+  
+  def sign_in_path_for(resource)
+    sweets_shops_path
   end
 
   def configure_sign_in_params

@@ -41,7 +41,6 @@ class SweetsShopsController < ApplicationController
     if params[:keyword].present?
      @sweets_shops = SweetsShop.sort(@selection)
     end
-    pp @sweets_shops
     render :index
 
   end

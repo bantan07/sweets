@@ -1,10 +1,17 @@
 Rails.application.routes.draw do
+  devise_for :admins, path: 'admin', skip: [:registrations, :passwords], controllers: {
+    sessions: 'admin/sessions'
+  }
   devise_for :users, controllers: {
     sessions: "users/sessions",
     registrations: "users/registrations"
   }
-  root to: "homes#top"
+  namespace :admin do
+    root to: 'homes#top'
+    resources :users, only:[:index, :show, :edit, :update]
+  end
   
+  root to: "homes#top"
   resources :sweets_shops, except: [:edit, :update] do
     resources :comments, only: [:create, :destroy]
     # resources :likes, only: [:create, :destroy]

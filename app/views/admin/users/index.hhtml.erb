@@ -1,0 +1,33 @@
+<p id="notice"></p>
+<div class="container">
+ <div class="row">
+  <div class="px-3 mx-auto">
+   <h4>ユーザー覧</h4>
+　 <table class="table">
+    <thead>
+     <tr>
+      <th>会員ID</th>
+      <th>氏名</th>
+      <th>メールアドレス</th>
+      <th>ステータス</th>
+     </tr>
+    </thead>
+    <tbody>
+　　<% @users.each do |user| %>
+　　 <tr>
+　　   <td><%= user.id %></td>
+　　   <td><%= use.rname %></td>
+　　   <td><%= user.email %></td>
+　　   <td>
+　　    <% if user.is_active %>
+        <font color="green">有効</font>
+        <% else %>
+        <font color="gray">退会</font>
+        <% end %>
+      </td>
+      </tr>
+     <% end %>
+     </div>
+    </div>
+  </div>
+ </div>

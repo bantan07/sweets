@@ -1,0 +1,25 @@
+<p id="notice"></p>
+
+<div class='container'>
+  <div class='row'>
+    <div class='col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0'>
+      <h4>管理者ログイン</h4>
+      <%= form_with model:@admin, url: session_path(resource_name), local: true do |f| %>
+     <div class=form-group>
+     <label for="email">メールアドレス
+      <%= f.text_field :email %>
+     </label>
+   </div>
+    <div class=form-group>
+     <label for="password">パスワード
+    <%= f.password_field :password %>
+    </label>
+  </div>
+
+   <div class="actions">
+    <%= f.submit "ログイン", class:'btn btn-primary' %>
+   </div>
+   <% end %>
+  </div>
+ </div>
+</div>

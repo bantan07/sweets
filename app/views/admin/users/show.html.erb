@@ -1,0 +1,36 @@
+<p id="notice"></p>
+<div class="container">  
+ <div class="row">  
+  <div class="px-3 mx-auto">
+   <h4>
+    <%= @user.name %>
+    の会員詳細
+   </h4>
+    <div class=group>
+     <label for="id">会員
+      <%= @user.id %>
+     </label>
+    </div>
+    <div class=group>
+     <label for="name">氏名
+      <%= @user.name %>
+     </label>
+    </div>
+    <div class=group>
+     <label for="email">メールアドレス
+      <%= @user.email %>
+     </label>
+    </div>
+    <div class=group>
+     <label for="is_active">会員ステータス
+      <%if @user.is_active %>
+        <font color="green">有効</font>
+      <% else %>
+        <font color="gray">退会</font>
+      <% end %>
+     </label>
+    </div>
+    <%= link_to "編集する", edit_admin_user_path(@user.id), class:'btn btn-success' %>
+  </div>
+ </div>
+</div>
