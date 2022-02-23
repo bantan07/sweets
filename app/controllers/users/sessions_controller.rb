@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
 class Users::SessionsController < Devise::SessionsController
-  before_action :reject_inactive_user, only: [:create]
-  before_action :configure_sign_in_params, only: [:create]
+  # before_action :reject_inactive_user, only: [:create]
+  # before_action :configure_sign_in_params, only: [:create]
 
- # GET /resource/sign_in
+  # GET /resource/sign_in
   # def new
   #   super
   # end
@@ -33,10 +33,7 @@ class Users::SessionsController < Devise::SessionsController
     sweets_shops_path
   end
 
-
   def configure_sign_in_params
     devise_parameter_sanitizer.permit(:sign_in, keys: [:email])
   end
-
-
 end
