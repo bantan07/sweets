@@ -5,11 +5,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   before_action :configure_sign_up_params, only: [:create]
   before_action :configure_account_update_params, only: [:update]
   
-  def sign_up_path_for(resource)
-    sweets_shops_path
-  end
-
-  # GET /resource/sign_up
+  
+ 
+ # GET /resource/sign_up
   # def new
   #   super
   # end
@@ -43,7 +41,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
-  # protected
+  protected
+  
+  def after_sign_in_path_for(resource)
+    sweets_shops_path
+  end
 
   # If you have extra params to permit, append them to the sanitizer.
    def configure_sign_up_params
@@ -65,9 +67,4 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super(resource)
   # end
   
-  private
-  
-  def user_params
-    params.resource(:user).permit(:name)
-  end
 end

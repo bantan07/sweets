@@ -1,12 +1,12 @@
 <p id="notice"></p>
 <div class=container>
  <div class=row>
-  <div class="px-3">
+  <div class="px-3 mx-auto">
    <h4>
     <%= @user.name %>
-    の会員情報編集
+    さんの会員情報編集
     </h4>
-    <%= form_with model:@user, url: admin_users_path(@customer.id), local:true,method: :patch do |f| %>
+    <%= form_with model:@user, url: admin_user_path(@user.id), local:true,method: :patch do |f| %>
     <div class=group>
      <label for="id">会員ID
       <%= @user.id %>
