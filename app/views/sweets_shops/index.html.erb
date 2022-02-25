@@ -1,38 +1,50 @@
-<p id="notice"></p>
-        <%= form_tag(search_path,:method => 'get') do %>
-          <%= text_field_tag :search %>
-          <%= submit_tag '検索', class: "btn btn-primary", :name => nil %>
-        <% end %>
-
-        <%= form_with model: @sweets_shop, url: search_path, method: :get, local: true do |f| %>
-          <%= f.select :keyword, [ ['投稿が新しい順', 'new'],
-                                  ['投稿が古い順', 'old'],
-                                  ['いいねが多い順', 'likes'],
-                                  ['いいねが少ない順', 'dislikes'],
-                                ], {selected: @selection} %>
-          <%= f.submit "検索", class: "btn btn-outline-dark" %>
-        <% end %>
-<div class="container">
-    <div class="px-3 mx-auto">
-      <h1>スイーツショップ一覧</h1>
-      <div class="row">
-        <% @sweets_shops.each do |sweets_shop| %>
-          <div class="col-md-3">
-            <%= link_to sweets_shop_path(sweets_shop.id) do %>
-              <%= attachment_image_tag sweets_shop, :image, class: 'img-fluid' %>
-            <% end %>
-            <h3>
-              <%= link_to sweets_shop.shop_name, sweets_shop_path(sweets_shop.id) %>
-              <h5><%= sweets_shop.prefectures %></h5>
-            </h3>
-            投稿者　<%= sweets_shop.user.name %></br>
-            <% sweets_shop.tags.each do |tag| %>
-              [<%= tag.name %>]
-            <% end %>
-            <%= sweets_shop.created_at.strftime('%Y/%m/%d') %></br>
-            いいね<%= sweets_shop.likes.count %>
-          </div>
-        <% end %>
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <title>オジェドオヌルドネイル</title>
+  </head>
+  <body>
+    <p id="notice"></p>
+    <h1>スイーツショップ一覧</h1>
+    <div class"search">
+      <%= form_tag(search_path,:method => 'get') do %>
+        <%= text_field_tag :search %>
+        <%= submit_tag '検索', class: "btn btn-primary", :name => nil %>
+      <% end %>
+    </div> 
+    <div class="soto">
+      <%= form_with model: @sweets_shop, url: search_path, method: :get, local: true do |f| %>
+        <%= f.select :keyword, [ ['投稿が新しい順', 'new'],
+                               ['投稿が古い順', 'old'],
+                               ['いいねが多い順', 'likes'],
+                               ['いいねが少ない順', 'dislikes'],
+                             ], {selected: @selection} %>
+        <%= f.submit "検索", class: "btn btn-outline-dark btn-sm" %>
+      <% end %>
+    </div>
+    <div class="container">
+      <div class="px-3 mx-auto">
+        <div class="row">
+          <% @sweets_shops.each do |sweets_shop| %>
+            <div class="col-md-3">
+              <%= link_to sweets_shop_path(sweets_shop.id) do %>
+                <%= attachment_image_tag sweets_shop, :image, class: 'img-fluid' %>
+              <% end %>
+              <h3>
+                <%= link_to sweets_shop.shop_name, sweets_shop_path(sweets_shop.id) %>
+                <h5><%= sweets_shop.prefectures %></h5>
+              </h3>
+              投稿者　<%= sweets_shop.user.name %></br>
+              <% sweets_shop.tags.each do |tag| %>
+                [<%= tag.name %>]
+              <% end %>
+              <%= sweets_shop.created_at.strftime('%Y/%m/%d') %></br>
+              いいね<%= sweets_shop.likes.count %>
+            </div>
+          <% end %>
+        </div>
       </div>
     </div>
-</div>
+ </body>
+</html>

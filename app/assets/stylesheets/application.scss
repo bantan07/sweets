@@ -15,3 +15,82 @@
  */
  @import "bootstrap";
  
+ // .header-text{
+ //    color: #fff;
+ // }
+ 
+ body{
+   background-color: #fffafa;
+ }
+ 
+ h1,h2,h3,h5{
+   font-family:"ヒラギノ丸ゴ Pro W4","ヒラギノ丸ゴ Pro","Hiragino Maru Gothic Pro";
+ }
+ 
+ .soto{
+   padding: 10px 45px;
+   text-align: right;
+ }
+ 
+ .search{
+   padding: 10px;
+ }
+ 
+ .main-visual{
+   width: 100%;
+   height: 500px; 
+   text-align: center;
+   background-image: url(sweets.jpeg);
+   background-position: center;
+   background-top: 120px;
+   
+ }
+ 
+ .main-visual-content{
+   width: 100%; 
+   height: 500px;
+   background-color: rgba( 0, 0, 0, 0.5);
+   padding-top: 160px;
+   
+ }
+ 
+ .main-visual-text{
+   padding-top: 120px;
+   color: #fff; 
+ }
+ 
+ .btn-gradient-radius {
+  display: inline-block;
+  padding: 7px 20px;
+  border-radius: 25px;
+  text-decoration: none;
+  color: #FFF;
+  background-image: linear-gradient(45deg, #FFC107 0%, #ff8b5f 100%);
+  transition: .4s;
+}
+
+.btn-gradient-radius:active {
+  /*押したとき*/
+  -webkit-transform: translateY(2px);
+  transform: translateY(2px);/*沈むように*/
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.15);
+  background-image: linear-gradient(#FFC107 0%, #FFC107 100%);/*グラデーションを明るく*/
+}
+
+.btn-gradient-3d-simple {
+  display: inline-block;
+  padding: 7px 20px;
+  border-radius: 25px;
+  text-decoration: none;
+  color: #FFF;
+  background-image: linear-gradient(45deg, #6795fd 0%, #6795fd 100%);
+  transition: .4s;
+}
+
+.btn-gradient-3d-simple:active {
+  /*押したとき*/
+  -webkit-transform: translateY(2px);
+  transform: translateY(2px);/*沈むように*/
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.15);
+  background-image: linear-gradient(#6795fd 0%, #6795fd 100%);/*グラデーションを明るく*/
+}

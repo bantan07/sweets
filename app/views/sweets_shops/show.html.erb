@@ -1,10 +1,17 @@
-<p id="notice"></p>
-<div class="container">
-    <div class="row">
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <title>オジェドオヌルドネイル</title>
+  </head>
+  <body>
+     <p id="notice"></p>
+     <div class="container">
+       <div class="row">
         <div class="col-lg-3">
           <%= render 'users/user',user:@user %>
 
-        <div class="col-lg-7">
+          <div class="col-lg-7">
               <%= attachment_image_tag @sweets_shop, :image, :size =>'500x200', class: 'img-fluid' %>
             <table class="table">
                 <tr>
@@ -61,11 +68,9 @@
                     <th>投稿日</th>
                     <td><%= @sweets_shop.created_at.strftime('%Y/%m/%d') %></td>
                 </tr>
-
-          </div>
-          </div>
-
+           </div>
+        </div>
+     </div>
     </div>
-
-</div>
-
+  </body>
+</html>

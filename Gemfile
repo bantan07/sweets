@@ -75,8 +75,8 @@ gem 'enum_help'
 gem 'bootstrap-sass'
 
 gem 'omniauth'
-gem 'omniauth-google-oauth2'
-gem 'omniauth-facebook'
+gem 'omniauth-line'
+gem 'omniauth-rails_csrf_protection'
 
 gem 'dotenv-rails'
 group :production do
