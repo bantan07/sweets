@@ -32,13 +32,13 @@ class SweetsShop < ApplicationRecord
      end
     end
 
-    def self.search(search)
+    def self.search(search) #ワード検索
       return SweetsShop.all unless search
-      ss1 = SweetsShop.where(['shop_name LIKE ?', "%#{search}%"])
+      ss1 = SweetsShop.where(['shop_name LIKE ?', "%#{search}%"]) 
         .or(SweetsShop.where(['prefectures LIKE ?', "%#{search}%"]))
-      #  .or(SweetsShop.all.includes(:tag).where(tag: ['name LIKE ?', "%#{search}%"]))
+      # SweetsShopのデータから店名と都道府県の検索をかける
       ss2 = []
-      search_tag = Tag.where(['name LIKE ?', "%#{search}%"])
+      search_tag = Tag.where(['name LIKE ?', "%#{search}%"])#タグのデータから検索をかける
       search_tag.each do |tag|
         tag.sweets_shops.each do |sweet_shop|
           ss2.push(sweet_shop)
@@ -48,22 +48,22 @@ class SweetsShop < ApplicationRecord
       total_record.uniq
     end
 
-    def self.sort(selection)
+    def self.sort(selection) #ソート検索
       case selection
       when 'new'
-        return all.order(created_at: :DESC)
+        return all.order(created_at: :DESC) #新規投稿順
       when 'old'
-        return all.order(created_at: :ASC)
+        return all.order(created_at: :ASC) #投稿古い順
       when 'likes'
         #
         #iine_ari = find(Like.group(:sweets_shop_id).order(Arel.sql('count(sweets_shop_id) desc')).pluck(:sweets_shop_id))
         #iine_nashi = SweetsShop.all - iine_ari
         #total_record = iine_ari + iine_nashi
         #return total_record
-        return self.left_joins(:likes).group(:id).order(Arel.sql('count(sweets_shop_id) desc'))
+        return self.left_joins(:likes).group(:id).order(Arel.sql('count(sweets_shop_id) desc')) #いいねの多い順
         # return find(Like.group(:sweets_shop_id).order(Arel.sql('count(sweets_shop_id) desc')).pluck(:sweets_shop_id))
       when 'dislikes'
-        return self.left_joins(:likes).group(:id).order(Arel.sql('count(sweets_shop_id) asc'))
+        return self.left_joins(:likes).group(:id).order(Arel.sql('count(sweets_shop_id) asc')) #いいねの少ない順
         #return find(Like.group(:sweets_shop_id).order(Arel.sql('count(sweets_shop_id) asc')).pluck(:sweets_shop_id))
       end
     end

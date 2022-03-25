@@ -20,7 +20,6 @@ class SweetsShopsController < ApplicationController
 
 
   def create
-    # binding.irb
     @sweets_shop = SweetsShop.new(sweets_shop_params)
     @sweets_shop.user_id = current_user.id
     tag_list = params[:sweets_shop][:tag_ids].split(',')
