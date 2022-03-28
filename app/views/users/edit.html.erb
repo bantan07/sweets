@@ -1,22 +1,32 @@
-<h2>編集</h2>
-<%=link_to "退会する", withdraw_path, method: :patch, data: { confirm: "本当に退会しますか?" }, class:'btn btn-danger' %>
-<%= form_with model: @user, url: user_path(@user.id), local:true, method: :patch do |f| %>
-<%= render 'layouts/error', model: f.object %>
-  <div class=group>
-    <label for="inputName">
-      <%= f.text_field :name, autofocus: true, id:"inputName"%>
-    </label>
-  </div>
-  <div class=group>
-    <label for="inputImage">
-     <%= f.attachment_field :image %>
-    </label>
-  </div>
-  <div class=group>
-    <label for="inputInputintroduction">
-      <%= f.text_field :introduction %>
-    </label>
-  </div>
-  <%= f.submit "編集", class:'btn btn-secondary' %>
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <title>オジェドオヌルドネイル</title>
+  </head>
+  <body>
+     <p id="notice"></p>
+     <h2>編集</h2>
+      <%=link_to "退会する", withdraw_path, method: :patch, data: { confirm: "本当に退会しますか?" }, class:'btn btn-danger' %>
+        <%= form_with model: @user, url: user_path(@user.id), local:true, method: :patch do |f| %>
+        <%= render 'layouts/error', model: f.object %>
+        <div class=group>
+          <label for="inputName">
+            <%= f.text_field :name, autofocus: true, id:"inputName"%>
+          </label>
+        </div>
+        <div class=group>
+         <label for="inputImage">
+           <%= f.attachment_field :image %>
+         </label>
+        </div>
+        <div class=group>
+          <label for="inputInputintroduction">
+            <%= f.text_field :introduction %>
+          </label>
+        </div>
+        <%= f.submit "編集", class:'btn btn-secondary' %>
+      <% end %>
+  </body>
+</html>
 
- <% end %>

@@ -1,76 +1,85 @@
-<p id=notice></p>
-<div class=container>
- <div class=row>
-  <div class="px-3 mx-auto">
-   <h4>新規投稿</h4>
-     <%= form_with model: @sweets_shop, url: sweets_shops_path(@sweets_shop.id),method: :post, local:true do |f| %>
-     <%= render 'layouts/error', model: f.object %>
-      <div class=f-group>
-       <label for="image_id">画像
-        <%= f.attachment_field :image %>
-       </label>
-      </div>
-      <div class=f-group>
-       <label for="shop_name">店名
-        <%= f.text_field :shop_name %>
-       </label>
-      </div>
-      <div class=form-group>
-       <label for="item_name">商品名
-        <%= f.text_field :item_name %>
-       </label>
-      </div>
-      <div class=f-group>
-       <label for="genre">ジャンル
-        <%= f.text_field :genre %>
-       </label>
-      </div>
-      <div class=f-group>
-       <label for="price">値段
-        <%= f.text_field :price %>円
-       </label>
-      </div>
-      <div class=form-group>
-       <label for="body">商品説明
-        <%= f.text_field :body %>
-       </label>
-      </div>
-      <div class=form-group>
-       <label for="body">都道府県
-        <%= f.text_field :prefectures %>
-       </label>
-      </div>
-      <div class=f-group>
-       <label for="address">住所
-        <%= f.text_field :address %>
-       </label>
-      </div>
-      <div class=f-group>
-       <label for="start_time">開店時間
-        <%= f.time_select(:start_time, {class:'select-date', id:"start-time", prompt:'--', time_separator: ':'}, ignore_data: true) %>
-       </label>
-      </div>
-      <div class=f-group>
-       <label for="finish_time">閉店時間
-        <%= f.time_select(:finish_time, {class:'select-date', id:"finish-time", prompt:'--', time_separator: ':'}, ignore_data: true) %>
-       </label>
-      </div>
-      <div class=form-group>
-       <label for="item_name">定休日
-        <%= f.text_field :regular_holiday %>
-       </label>
-      </div>
-      <div class=f-group>
-       <label for="status">テイクアウト
-        <%= f.select :status, SweetsShop.statuses_i18n.invert %>
-       </label>
-      </div>
-      <div class=f-group>
-      <%= f.text_field :tag_ids, class: "form-control", id:'tag_ids',\
-      placeholder: "タグをつける。複数つけるには','で区切ってください。" %>
-      </div>
-      <%= f.submit "投稿", class:'btn btn- btn-success' %>
-     <% end %>
-  </div>
- </div>
-</div>
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <title>オジェドオヌルドネイル</title>
+  </head>
+  <body>
+   <p id=notice></p>
+   <div class=container>
+    <div class=row>
+     <div class="px-3 mx-auto">
+      <h4>新規投稿</h4>
+        <%= form_with model: @sweets_shop, url: sweets_shops_path(@sweets_shop.id),method: :post, local:true do |f| %>
+        <%= render 'layouts/error', model: f.object %>
+         <div class=f-group>
+          <label for="image_id">画像
+           <%= f.attachment_field :image %>
+          </label>
+         </div>
+         <div class=f-group>
+          <label for="shop_name">店名
+           <%= f.text_field :shop_name %>
+          </label>
+         </div>
+         <div class=form-group>
+          <label for="item_name">商品名
+           <%= f.text_field :item_name %>
+          </label>
+         </div>
+         <div class=f-group>
+          <label for="genre">ジャンル
+           <%= f.text_field :genre %>
+          </label>
+         </div>
+         <div class=f-group>
+          <label for="price">値段
+           <%= f.text_field :price %>円
+          </label>
+         </div>
+         <div class=form-group>
+          <label for="body">商品説明
+           <%= f.text_field :body %>
+          </label>
+         </div>
+         <div class=form-group>
+          <label for="body">都道府県
+           <%= f.text_field :prefectures %>
+          </label>
+         </div>
+         <div class=f-group>
+          <label for="address">住所
+           <%= f.text_field :address %>
+          </label>
+         </div>
+         <div class=f-group>
+          <label for="start_time">開店時間
+           <%= f.time_select(:start_time, {class:'select-date', id:"start-time", prompt:'--', time_separator: ':'}, ignore_data: true) %>
+          </label>
+         </div>
+         <div class=f-group>
+          <label for="finish_time">閉店時間
+           <%= f.time_select(:finish_time, {class:'select-date', id:"finish-time", prompt:'--', time_separator: ':'}, ignore_data: true) %>
+          </label>
+         </div>
+         <div class=form-group>
+          <label for="item_name">定休日
+           <%= f.text_field :regular_holiday %>
+          </label>
+         </div>
+         <div class=f-group>
+          <label for="status">テイクアウト
+           <%= f.select :status, SweetsShop.statuses_i18n.invert %>
+          </label>
+         </div>
+         <div class=f-group>
+         <%= f.text_field :tag_ids, class: "form-control", id:'tag_ids',\
+         placeholder: "タグをつける。複数つけるには','で区切ってください。" %>
+         </div>
+         <%= f.submit "投稿", class:'btn btn- btn-success' %>
+        <% end %>
+     </div>
+    </div>
+   </div>
+  </body>
+ </html>
